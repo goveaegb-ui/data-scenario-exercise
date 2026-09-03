@@ -1,1 +1,1 @@
-
+--Quick summary of issue: CSAT score dropped 12% in the Billing category, no change in headcount or ticket volume.

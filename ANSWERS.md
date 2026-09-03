@@ -1,6 +1,6 @@
 Quick summary of issue: CSAT score dropped 12% in the Billing category, no change in headcount or ticket volume.
 1. First response time by team Write a query returning the average first_response_minutes for tickets closed in the last 30 days, grouped by agent team.
-
+```
 SELECT a.team, ROUND(AVG(t.first_response_minutes),2) AS avg_first_response_minutes
 FROM tickets t
 JOIN agents a
@@ -9,7 +9,7 @@ WHERE t.closed_at >= CURRENT_DATE - INTERVAL '30 days'
 AND t.first_response_minutes IS NOT NULL
 GROUP BY a.team
 ORDER BY avg_first_response_minutes ASC;
-
+```
 3. Agents with above-average reopen rates Write a query returning each agent's reopen rate (reopened tickets ÷ total tickets they handled) for agents whose rate is higher than their own team's average.
 
 4. CSAT trend by category Write a query returning the average CSAT score per category, per month, for the last 3 months.

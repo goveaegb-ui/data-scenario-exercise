@@ -70,8 +70,32 @@ First, since there were no changes in staffing headcount or ticket volume, it wo
 
 As for additional data I would want to pull, I think it's important to gather the qualitative CSAT feedback. By analyzing the customer's comments, it can help identify any pain points within the product itself or with the agent support. For example, maybe there is a trend where some specific agents are not providing a solution for the root cause, but just giving generic responses that don't solve the issue. 
 
+I would also like to query data on specific macros or canned responses used within the Billing tickets to determine if the information is innacurate or outdated.
+
 5. Testing a theory. Pick one specific theory for what might be driving the drop. State your theory, then write a query using the tables above that would help confirm or rule it out.
 
+Theory: The 12% drop in Billing CSAT is driven by a drop in First Contact Resolution (FCR). Customers are receiving incomplete initial responses, leading to a spike in ticket reopens, and customers who experience reopens rate their satisfaction significantly lower. In support operations, customers rarely complain about a resolution if it's handled right the first time. They complain when they have to follow up repeatedly.
+```
+SELECT 
+    DATE_TRUNC('month', t.opened_at)::date AS ticket_month,
+    COUNT(t.ticket_id) AS billing_ticket_volume,
+    -- Reopen Rate across all Billing tickets
+    ROUND(
+        SUM(CASE WHEN t.reopened_count > 0 THEN 1 ELSE 0 END)::numeric 
+        / NULLIF(COUNT(t.ticket_id), 0), 
+        4
+    ) AS billing_reopen_rate,
+    -- CSAT: Single-Touch (FCR) vs. Reopened Tickets
+    ROUND(AVG(CASE WHEN t.reopened_count = 0 THEN c.score END), 2) AS avg_csat_first_contact_resolved,
+    ROUND(AVG(CASE WHEN t.reopened_count > 0 THEN c.score END), 2) AS avg_csat_reopened
+FROM tickets t
+LEFT JOIN csat_responses c 
+    ON t.ticket_id = c.ticket_id
+WHERE t.category = 'Billing'
+  AND t.opened_at >= DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '2 months'
+GROUP BY DATE_TRUNC('month', t.opened_at)
+ORDER BY ticket_month ASC;
+```
 6. What you'd actually do. Say your query in Question 5 showed that reopened tickets in Billing spiked, and most of the reopens trace back to one specific issue type (e.g., refund timing questions). What would you actually do with that in the next week? Be concrete. What would you say to the team, what (if anything) would you change in a process or macro, and how would you know if it worked?
 
 7. Reporting up and coaching down You need to update your own manager on this in two sentences, and separately coach one agent on it in a 1:1. How would those two conversations differ?

@@ -98,4 +98,12 @@ ORDER BY ticket_month ASC;
 ```
 6. What you'd actually do. Say your query in Question 5 showed that reopened tickets in Billing spiked, and most of the reopens trace back to one specific issue type (e.g., refund timing questions). What would you actually do with that in the next week? Be concrete. What would you say to the team, what (if anything) would you change in a process or macro, and how would you know if it worked?
 
+First, I would audit a sample of the reopened tickets to see the type of information the agents are providing and if they are using a macro or canned responses per a specific process they are following. I will assume that the macro indicates that the refund timing is around 10 business days. However, per the audit, the reopened tickets are regarding refund timing for Bank of America, which has a fictional refund timing of 20 business days. So the customer comes back after the 10 day mark, asking about their refund, continuously re-opening the ticket. 
+
+Having identified the issue, we will need to update the macro to flag refund timing for Bank of America. We would also need to update both public help centers and our own internal knowledge bases to ensure this information is updated.
+
+Regarding briefing the team, I would send a Slack message flagging the issue, indicating that we're updating the information in the macro and all relevant information sources. I would also acknowledge that this is an issue that has also affected the team and that with these changes we expect for them to have less friction. I would follow up in our team meeting and also ask for them to flag if there is a snag with the changes.
+
+To know that these changes worked, I would do another round of ticket audits, check in with the agents, and do another query of reopen rate on tickets as well as First Contact Resolution rate. Longer term, the Billing CSAT score should recover from the 12% drop.
+
 7. Reporting up and coaching down You need to update your own manager on this in two sentences, and separately coach one agent on it in a 1:1. How would those two conversations differ?

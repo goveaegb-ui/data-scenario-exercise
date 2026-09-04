@@ -66,6 +66,10 @@ ORDER BY t.category, csat_month ASC;
 ```
 4. Digging in. Beyond the three tables above, what additional data would you want to pull to understand the Billing drop — and which of the existing tables would you start with, and why?
 
+First, since there were no changes in staffing headcount or ticket volume, it would be important to query deeper into the 'Billing' category within the 'tickets' table. I would do a JOIN with the 'csat_responses' table to see if there is a specific subcategory or issue that is causing the drop in CSAT scores. This could help with determining if the problem lies within a reopen rate, long resolution time, etc.
+
+As for additional data I would want to pull, I think it's important to gather the qualitative CSAT feedback. By analyzing the customer's comments, it can help identify any pain points within the product itself or with the agent support. For example, maybe there is a trend where some specific agents are not providing a solution for the root cause, but just giving generic responses that don't solve the issue. 
+
 5. Testing a theory. Pick one specific theory for what might be driving the drop. State your theory, then write a query using the tables above that would help confirm or rule it out.
 
 6. What you'd actually do. Say your query in Question 5 showed that reopened tickets in Billing spiked, and most of the reopens trace back to one specific issue type (e.g., refund timing questions). What would you actually do with that in the next week? Be concrete. What would you say to the team, what (if anything) would you change in a process or macro, and how would you know if it worked?

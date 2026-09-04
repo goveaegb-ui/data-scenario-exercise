@@ -107,3 +107,15 @@ Regarding briefing the team, I would send a Slack message flagging the issue, in
 To know that these changes worked, I would do another round of ticket audits, check in with the agents, and do another query of reopen rate on tickets as well as First Contact Resolution rate. Longer term, the Billing CSAT score should recover from the 12% drop.
 
 7. Reporting up and coaching down You need to update your own manager on this in two sentences, and separately coach one agent on it in a 1:1. How would those two conversations differ?
+
+To the manager:
+The 12% Billing CSAT drop was driven by an influx of ticket reopens caused by our refund macro understating settlement timelines for institutions like Bank of America. We updated customer facing docs and internal macros with accurate 20-day expectations, and we expect daily reopen rates to drop immediately with Billing CSAT recovering within 2–3 weeks (details and tracking linked in this brief one-pager).
+
+1:1 session with agent:
+I noticed your reopen rate on Billing tickets increased recently, especially around refund requests. Let's pull up two of these tickets together to see what the customers were experiencing.
+
+When we tell a customer their refund takes 10 days, but their bank actually takes 20, they panic on day 11 and write back in. That creates a frustrated customer and forces you to handle the exact same inquiry twice.
+
+We just rolled out an updated refund macro that flags these institution-specific timelines upfront. Let’s start using this on all your refund tickets this week to set clear expectations on day one and save you from handling repeat replies.
+
+Please let me know how it goes and we can check in on our next 1:1.
